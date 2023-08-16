@@ -1,7 +1,3 @@
-#MODEL='gpt2'
-
-
-
 MODELS=('gpt2' 'gpt2-xl' 'bert-base' 'bert-large')
 
 echo "model,deepspeed,huggingface" >> results.csv
