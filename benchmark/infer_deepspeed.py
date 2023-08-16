@@ -10,7 +10,7 @@ device = 'cuda'
 
 
 def get_deepspeed(model):
-    ds_engine = deepspeed.init_inference(model, mp_size = 1, dtype = torch.float, replace_with_kernel_inject = True, checkpoint = None, replace_method = 'auto')
+    ds_engine = deepspeed.init_inference(model, dtype = torch.float, replace_with_kernel_inject = True, checkpoint = None)
     return ds_engine
 
 def get_model(name):
@@ -59,6 +59,7 @@ def run_test(model_name, ds = False):
     if ds:
         ds_engine = get_deepspeed(model)
         model = ds_engine.module
+        #print(model)
     else:
         model = model.to(device)
 
