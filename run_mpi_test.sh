@@ -1,4 +1,7 @@
-benchmark=$PWD/benchmark
-mpi_test=$PWD/mpi_test
+container_name=$1
+if [ -z "$1" ]
+then
+    container_name="node1"
+fi
 
-docker run --rm --gpus all -it -v $mpi_test:/home/deepspeed/mpi_test --name node1 --network deepspeed mpi_test
+docker run --rm --gpus all -it -v $PWD/mpi_test:/home/deepspeed/mpi_test --name $container_name --network deepspeed mpi_test
