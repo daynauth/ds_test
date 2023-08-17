@@ -83,4 +83,9 @@ RUN echo "deepspeed ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 # # Change to non-root privilege
 USER deepspeed
 
+
+# Set up SSH keys
+RUN ssh-keygen -q -t rsa -N '' -f /home/deepspeed/.ssh/id_rsa
+RUN cp /home/deepspeed/.ssh/id_rsa home/deepspeed/.ssh/authorized_keys
+
 WORKDIR /home/deepspeed
