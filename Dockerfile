@@ -84,3 +84,4 @@ WORKDIR /home/deepspeed
 RUN pip install pandas
 ENV PATH="${PATH}:/home/deepspeed/.local/bin"
 
+WORKDIR /home/deepspeed
