@@ -29,6 +29,13 @@ RUN add-apt-repository ppa:git-core/ppa -y && \
         apt-get install -y git && \
         git --version
 
+##############################################################################
+# Client Liveness & Uncomment Port 22 for SSH Daemon
+##############################################################################
+# Keep SSH client alive from server side
+RUN echo "ClientAliveInterval 30" >> /etc/ssh/sshd_config
+RUN cp /etc/ssh/sshd_config ${STAGE_DIR}/sshd_config && \
+        sed "0,/^#Port 22/s//Port 22/" ${STAGE_DIR}/sshd_config > /etc/ssh/sshd_config
 
 
 ##############################################################################
