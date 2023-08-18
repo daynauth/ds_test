@@ -85,8 +85,10 @@ USER deepspeed
 
 
 # Set up SSH keys
-#COPY keys/* /home/deepspeed/.ssh/
 RUN ssh-keygen -q -t rsa -N '' -f /home/deepspeed/.ssh/id_rsa
-RUN cp /home/deepspeed/.ssh/id_rsa.pub home/deepspeed/.ssh/authorized_keys
+RUN cp /home/deepspeed/.ssh/id_rsa.pub home/deepspeed/.ssh/authorized_keys && \
+        chmod 755 /home/deepspeed/.ssh/authorized_keys
 
+EXPOSE 22
+RUN sudo service ssh start
 WORKDIR /home/deepspeed
