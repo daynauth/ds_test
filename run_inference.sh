@@ -7,4 +7,4 @@ then
     container_name="node1"
 fi
 
-docker run --rm --gpus all -it -v ${benchmark}:/home/deepspeed/benchmark --name $container_name daynauth/deepspeed
+docker run --rm --gpus all -it -v ${benchmark}:/home/deepspeed/benchmark --network deepspeed --name $container_name daynauth/deepspeed
